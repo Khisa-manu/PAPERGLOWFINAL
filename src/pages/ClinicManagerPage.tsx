@@ -101,6 +101,11 @@ export const ClinicManagerPage: React.FC<ClinicManagerPageProps> = ({
   const [documents, setDocuments] = useState<ClinicDocument[]>(DEFAULT_CLINIC_DOCUMENTS);
   const [notifications, setNotifications] = useState<ClinicNotification[]>([]);
 
+  // Dark Mode State
+  const [isDark, setIsDark] = useState<boolean>(() => {
+    return localStorage.getItem('paperglow_theme_dark') === 'true';
+  });
+
   // Cloud Synchronization State
   const [isCloudSyncing, setIsCloudSyncing] = useState<boolean>(false);
   const [isCloudOnline, setIsCloudOnline] = useState<boolean>(true);
@@ -166,24 +171,41 @@ export const ClinicManagerPage: React.FC<ClinicManagerPageProps> = ({
       if (visRes.status === 'fulfilled' && visRes.value?.data && visRes.value.data.length > 0) {
         const cloudVisits: ConsultationRecord[] = visRes.value.data.map((v: any) => ({
           id: String(v.id || v.uuid),
-          consultationNumber: v.visit_number || `VIS-${v.id}`,
+          visitNumber: v.visit_number || `VIS-${v.id}`,
           patientId: String(v.patient_id || 'pat-1'),
-          patientName: v.patient_name || '',
+          patientName: v.patient_name || 'Patient',
           patientNumber: v.patient_opd || `OPD-${v.id}`,
+          patientAge: 32,
+          patientGender: 'Female',
           practitionerId: 'staff-1',
-          practitionerName: v.doctor || 'Doctor',
+          practitionerName: v.doctor || 'Dr. Brenda Muthoni',
+          practitionerRole: 'Medical Officer',
           date: v.date || new Date().toISOString().split('T')[0],
+          time: '10:30 AM',
           chiefComplaint: v.diagnosis || 'Clinical Review',
           historyOfPresentIllness: 'Stable presentation',
+          vitals: {
+            bpSystolic: 120,
+            bpDiastolic: 80,
+            pulseRate: 72,
+            temperatureCelsius: 36.6,
+            respiratoryRate: 16,
+            oxygenSaturationSpO2: 98,
+            weightKg: 68,
+            heightCm: 165,
+            bmi: 25.0,
+            recordedAt: '10:15 AM',
+            recordedBy: 'Nurse Station',
+          },
           examinationFindings: 'All vitals within normal parameters',
-          provisionalDiagnosis: v.diagnosis || 'General',
-          finalDiagnosis: v.diagnosis || 'General',
+          clinicalImpressionDiagnosis: v.diagnosis || 'General Clinical Review',
+          treatmentPlan: v.prescription || 'Follow prescription as advised',
           prescriptions: [],
-          labTestsRequested: [],
-          treatmentPlanNotes: v.prescription || 'Follow prescription as advised',
+          labRequests: [],
+          clinicalNotes: 'Follow-up as needed',
           followUpDate: '2026-03-01',
           consultationFeeKes: Number(v.total_cost || 2000),
-          status: 'completed' as any,
+          billed: true,
         }));
         setConsultations(cloudVisits);
       }

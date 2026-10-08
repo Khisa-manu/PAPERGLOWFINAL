@@ -193,7 +193,7 @@ export const SchoolManagerPage: React.FC<SchoolManagerPageProps> = ({
           transactionReference: p.reference || `TXN-${p.id}`,
           paymentDate: p.date || new Date().toISOString().split('T')[0],
           term: (p.term || 'Term 1') as any,
-          receivedBy: 'Bursar Office',
+          recordedBy: 'Bursar Office',
           notes: 'MariaDB persistent receipt',
         }));
         setPayments(cloudPayments);

@@ -90,6 +90,11 @@ export const ChamaManagerPage: React.FC<ChamaManagerPageProps> = ({
   const [assets, setAssets] = useState<GroupAsset[]>(DEFAULT_ASSETS);
   const [notifications, setNotifications] = useState<ChamaNotification[]>([]);
 
+  // Dark Mode State
+  const [isDark, setIsDark] = useState<boolean>(() => {
+    return localStorage.getItem('paperglow_theme_dark') === 'true';
+  });
+
   // Cloud Synchronization State
   const [isCloudSyncing, setIsCloudSyncing] = useState<boolean>(false);
   const [isCloudOnline, setIsCloudOnline] = useState<boolean>(true);
@@ -153,20 +158,23 @@ export const ChamaManagerPage: React.FC<ChamaManagerPageProps> = ({
         const cloudLoans: LoanRecord[] = lonRes.value.data.map((l: any) => ({
           id: String(l.id || l.uuid),
           memberId: String(l.member_id || 'mem-1'),
-          memberName: l.borrower_name || '',
+          memberName: l.borrower_name || 'Group Member',
           membershipNumber: `UB-${l.id}`,
+          loanType: 'Development Loan',
           loanNumber: l.loan_code || `LN-${l.id}`,
           principalAmountKes: Number(l.principal || 0),
           interestRatePercent: Number(l.interest_rate || 10),
-          totalPayableKes: Number(l.total_payable || 0),
-          balanceRemainingKes: Number(l.balance || 0),
-          totalPaidKes: Number((l.total_payable || 0) - (l.balance || 0)),
-          disbursementDate: l.created_at ? l.created_at.split('T')[0] : '2026-01-10',
-          dueDate: l.due_date || '2026-06-30',
+          interestAmountKes: Number((l.total_payable || 0) - (l.principal || 0)),
+          totalRepayableKes: Number(l.total_payable || 0),
+          durationMonths: 6,
           monthlyInstallmentKes: Math.round(Number(l.total_payable || 0) / 6),
-          status: (l.status?.toLowerCase() === 'active' ? 'active' : 'active') as any,
-          purpose: 'Business expansion',
+          applicationDate: l.created_at ? l.created_at.split('T')[0] : '2026-01-10',
+          disbursementDate: l.created_at ? l.created_at.split('T')[0] : '2026-01-10',
+          status: 'active',
+          amountRepaidKes: Number((l.total_payable || 0) - (l.balance || 0)),
+          balanceKes: Number(l.balance || 0),
           guarantors: [],
+          purpose: 'Business expansion',
           repayments: [],
         }));
         setLoans(cloudLoans);

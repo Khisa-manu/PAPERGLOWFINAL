@@ -148,6 +148,7 @@ export interface FeePayment {
   paymentMethod: FeePaymentMethod;
   transactionReference: string;
   paymentDate: string;
+  term?: 'Term 1' | 'Term 2' | 'Term 3';
   recordedBy: string;
   notes?: string;
 }

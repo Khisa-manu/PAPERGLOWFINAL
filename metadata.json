@@ -1,6 +1,6 @@
 {
   "name": "Remix paperglow",
-  "description": "Imported from GitHub: Khisa-manu/paperglow",
+  "description": "Paperglow — Business Applications & Custom Physical Branding Platform built with Laravel 11, Blade, Livewire 3, Alpine.js, Tailwind CSS, MariaDB, and PHP 8.3 for Shujaa Host / DirectAdmin.",
   "permissions": [],
   "capabilities": [
     "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"

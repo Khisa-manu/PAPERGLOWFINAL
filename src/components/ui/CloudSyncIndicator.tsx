@@ -2,9 +2,10 @@ import React, { useState } from 'react';
 import { Database, RefreshCw } from 'lucide-react';
 
 interface CloudSyncIndicatorProps {
-  appName: string;
+  appName?: string;
   isSyncing?: boolean;
   isOnline?: boolean;
+  lastSyncedText?: string;
   onManualSync?: () => void;
   className?: string;
 }
