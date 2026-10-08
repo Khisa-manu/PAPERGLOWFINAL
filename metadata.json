@@ -1,0 +1,8 @@
+{
+  "name": "Remix paperglow",
+  "description": "Imported from GitHub: Khisa-manu/paperglow",
+  "permissions": [],
+  "capabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

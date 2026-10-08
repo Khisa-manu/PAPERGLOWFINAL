@@ -1,11 +1,21 @@
-<div align="center">
+# Paperglow — Business Applications & Custom Branding
 
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
+The official web platform for **Paperglow**, combining two core business operations under one central account:
+1. **Digital Business Applications**: Invoicing, CRM, Project Hub, and Team Permissions.
+2. **Branding & Customization**: Graphic design, banners, T-shirts, hoodies, uniforms, caps, business cards, and custom merchandise.
 
-  <h1>Built with AI Studio</h2>
+## Visual Design
 
-  <p>The fastest path from prompt to production with Gemini.</p>
+- **Primary Brand Color**: Red (`#dc2626` / `#ef4444`)
+- **Supporting Colors**: Neutral white, charcoal black (`#0f1115`), and crisp grays
+- Clean, human-designed aesthetic with zero glassmorphism, no artificial gradients, and no fake telemetry.
 
-  <a href="https://aistudio.google.com/apps">Start building</a>
+## Features
 
-</div>
+- **Hero**: Clear dual-engine positioning with direct CTAs for software exploration and physical branding.
+- **Featured Applications**: Interactive cards for Paperglow Invoice, CRM, Project Hub, and Team with feature deep-dive modals and working subscription toggles.
+- **One Paperglow Account**: Single-sign-on architecture overview and live central account dashboard simulation.
+- **Branding & Customization Catalog**: Showcase across all 8 requested categories with interactive quote and specification modals.
+- **How Paperglow Works**: 4-step clear progression from account creation to centralized management.
+- **Why Paperglow**: 4 practical value pillars highlighting convenience, unified accounts, and commercial quality.
+- **Final CTA**: Direct prompt to create a Paperglow account.
